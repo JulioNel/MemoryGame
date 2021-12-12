@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/img/icono.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body>
+    <!--Main menu view-->
+    <div id="mainMenu">
+        <h1>Memory Game</h1>
+        <div class="logo"></div>
+        <p>Select the category</p>
+        <div class="mainMenu-categories">
+            <button id="category1" class="buttons"></button>
+            <button id="category2" class="buttons"></button>
+            <button id="category3" class="buttons"></button>
+            <button id="category4" class="buttons"></button>
+        </div>
+
+      
+    </div>
+    <!--Game view-->
+    <div id="game">
+        <div class="gameBoard">
+            <div id="0️" class="card 0">
+                <div class="back 0"></div>
+            </div>
+            <div id="1" class="card 1">
+                <div class="back 1"></div>
+            </div>
+            <div id="2" class="card 2">
+                <div class="back 2"></div>
+            </div>
+            <div id="3" class="card 3">
+                <div class="back 3"></div>
+            </div>
+            <div id="4" class="card 4">
+                <div class="back 4"></div>
+            </div>
+            <div id="5" class="card 5">
+                <div class="back 5"></div>
+            </div>
+            <div id="6" class="card 6">
+                <div class="back 6"></div>
+            </div>
+            <div id="7" class="card 7">
+                <div class="back 7"></div>
+            </div>
+            <div id="8" class="card 8">
+                <div class="back 8"></div>
+            </div>
+            <div id="9" class="card 9">
+                <div class="back 9"></div>
+            </div>
+            <div id="10" class="card 10">
+                <div class="back 10"></div>
+            </div>
+            <div id="11" class="card 11">
+                <div class="back 11"></div>
+            </div>
+            <div id="12" class="card 12">
+                <div class="back 12"></div>
+            </div>
+            <div id="13" class="card 13">
+                <div class="back 13"></div>
+            </div>
+            <div id="14" class="card 14">
+                <div class="back 14"></div>
+            </div>
+            <div id="15" class="card 15">
+                <div class="back 15"></div>
+            </div>
+
+        </div>
+        <div class="controls">
+            <div class="controls-score">
+                <p>Time: <span id="chronometer">00:00:00</span></p>
+                <p>Score: <span id="score">0</span></p>
+                <p>Highest score: <span id="highestScore">0</span></p>
+                <p>Flipped cards: <span id="flippedCards">0</span></p>
+            </div>
+
+            <div class="controls-buttons">
+                <button id="homeButton" class="buttons"></button>
+                <button id="pauseButton" class="buttons"></button>
+                <button id="replayButton" class="buttons"></button>
+               
+            </div>
+
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</body>
+
+</html>
