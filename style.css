@@ -9,7 +9,7 @@ body {
     background-image: url('img/backgroundImage.jpg');
     background-repeat: no-repeat;
     background-position: center;
-        background-size:cover;
+    background-size:cover;
 }
 
 #mainMenu {
@@ -238,8 +238,27 @@ h1 {
 }
 
 @media only screen and (max-width: 992px) {
-    #mainMenu{
-        color: green;
+    #mainMenu {
+       height:95vh;
+       width: 85vw;
+    }
+    .mainMenu-categories {
+       
+        width: 40vw;
+    }
+    .buttons {
+         
+        width: 8vw;
+        height: 8vw;
+        
+    }
+    .controls-buttons {
+        display: flex;
+        flex-flow: nowrap row;
+        justify-content: space-between;
+        margin: auto;
+        margin-top: 30px;
+        width: 80%;
     }
 }
 @media only screen and (max-width: 768px) {
