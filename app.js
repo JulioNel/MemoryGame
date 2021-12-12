@@ -49,8 +49,6 @@ minutes=0;
 hours=0;
 currentScore=0;
 bonus=0;
-//Set the initial value of the max score variable
-localStorage.getItem('max')=="undefined"?maxScore=0:maxScore=localStorage.getItem('max');
 
 //--------------------------------------------------------------------------------------------------------------
 //main menu buttons actions
@@ -262,6 +260,7 @@ function resetValues(_start){
     validMoves=0;
     start=_start;
     matchCounter=0;
+    localStorage.getItem('max')==null?maxScore=0:maxScore=localStorage.getItem('max');
     degrees=0;
     seconds=0;
     minutes=0;
@@ -318,7 +317,7 @@ function startChronometer(){
 function replayGame(){
   
     generateBackground();
-    startChronometer();
+   
     resetValues(1);
     startChronometer();
 }
