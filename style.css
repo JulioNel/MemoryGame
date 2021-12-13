@@ -301,7 +301,10 @@ h1 {
     .card {
         width: 20vw;
         height: 20vw;
-        border-radius: 5px;
+        border-radius: 10px;
+    }
+    .back {
+        border-radius: 10px;
     }
     .controls {
         width: 100%;
@@ -309,15 +312,21 @@ h1 {
     }
     .controls-score {
         width: 100%;
+        display: flex;
+        flex-flow: wrap row;
+       
     }
+   
     .controls-score p {
         
         margin-bottom: 1vh;
-        font-size: 4.5vw;
+        font-size: 4vw;
+        min-width: 50%;
     }
     .buttons {
         width: 15vw;
         height: 15vw;
+        margin-bottom: 20px;
     }
     .controls-buttons {
         width: 60%;
