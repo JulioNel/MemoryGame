@@ -247,10 +247,8 @@ h1 {
         width: 40vw;
     }
     .buttons {
-         
         width: 8vw;
         height: 8vw;
-        
     }
     .controls-buttons {
         display: flex;
@@ -262,9 +260,21 @@ h1 {
     }
 }
 @media only screen and (max-width: 768px) {
-    #mainMenu{
-        color: purple
+    #game {
+        flex-flow: nowrap column;
+        width: 100%;
     }
+    .gameBoard {
+        width: 100%;
+        height: 80vh;
+        justify-items: center;
+        margin: auto;
+    }
+    .card {
+        width: 20vw;
+        height: 12vw;
+    }
+    
 }
 @media only screen and (max-width: 600px) {
     #mainMenu{
