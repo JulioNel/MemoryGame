@@ -237,7 +237,12 @@ h1 {
     box-shadow: 7px 3px 4px rgb(15, 15, 15)
 }
 
-@media only screen and (max-width: 992px) or ((max-width: 768px) and (orientation: landscape)) {
+@media only screen and ((max-width: 992px) and (orientation:portrait)) or ((max-width: 768px) and (orientation: landscape)) {
+    body {
+        background-repeat: repeat;
+       
+        
+    }
     #mainMenu {
        height:95vh;
        width: 85vw;
@@ -253,6 +258,17 @@ h1 {
     .controls-buttons {
         width: 80%;
     }
+    #game {
+        flex-flow: nowrap column;
+        width: 60%;
+    }
+    .card {
+        width: 20vw;
+        height: 20vw;
+        border-radius: 10px;
+    }
+   
+
 }
 @media only screen and (max-width: 768px) and (orientation:portrait){
     body {

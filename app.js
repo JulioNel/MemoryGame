@@ -5,7 +5,7 @@ let mainMenu, startButton, closeButton1, category1, category2, category3, catego
 //game elements
 let game, cards, homeButton, pauseButton, replayButton, closeButton2;
 //Auxiliar variables
-let i, properties, start, actualCard, actualBack, previousCard, currentCard, selectedCategoryIndex, currentflippedCards, validMoves, degrees, matchCounter, seconds, minutes, hours, currentScore, maxScore, highestScore, bonus,id, state;
+let i, properties, start, actualCard, actualBack, previousCard, currentCard, selectedCategoryIndex, currentflippedCards, validMoves, degrees, matchCounter, seconds, minutes, hours, currentScore, maxScore, highestScore, bonus,id, CardFlipAudio;
 //Auxiliar arrays
 let animationValues = [];
 let imagesCategories = []
@@ -49,7 +49,7 @@ minutes=0;
 hours=0;
 currentScore=0;
 bonus=0;
-
+CardFlipAudio=new Audio("sounds/CardFlip.mp3");
 //--------------------------------------------------------------------------------------------------------------
 //main menu buttons actions
 replayButton.addEventListener('click',replayGame);
@@ -77,8 +77,10 @@ for (i = 0; i < cards.length; i++) {
                 
                 previousCard=e.target; //the first card is stored
                 degrees=180;
-                
+               
                 flippedCardAnimation( previousCard, degrees)
+                CardFlipAudio.load();
+                CardFlipAudio.play();
                 
             }else{
                 
@@ -93,8 +95,10 @@ for (i = 0; i < cards.length; i++) {
 
                     }else{
                        //The second card is flipped
-                      
-                        flippedCardAnimation(currentCard, degrees)
+                        
+                        flippedCardAnimation(currentCard, degrees);
+                        CardFlipAudio.load();
+                        CardFlipAudio.play();
                         //If the first and second card has the same background there's a match  
                         if(backgroundIndex[previousCard.classList[1]]==backgroundIndex[currentCard.classList[1]]){
                            // matchCounter=
@@ -158,9 +162,11 @@ for (i = 0; i < cards.length; i++) {
                             //if there is no match the cards return to their original position
                             degrees=0;
                             setTimeout(() => {
+                                
                                 flippedCardAnimation(previousCard,degrees);
                                 flippedCardAnimation(currentCard,degrees);
-                                
+                                CardFlipAudio.load();
+                                CardFlipAudio.play();
                                 validMoves=0;
                             }, 1000);
                         }
@@ -315,9 +321,8 @@ function startChronometer(){
 }
 
 function replayGame(){
-  
+    
     generateBackground();
-   
     resetValues(1);
     startChronometer();
 }
