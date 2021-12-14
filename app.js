@@ -1,9 +1,9 @@
 //----------------------------------------------------------------------------------
 //VARIABLES DECLARATIONS
 //main menu elements
-let mainMenu, startButton, closeButton1, category1, category2, category3, category4;
+let mainMenu, mainMenuCategories;
 //game elements
-let game, cards, homeButton, pauseButton, replayButton, closeButton2;
+let game, gameBoard, cards, controlsButtons;
 //Auxiliar variables
 let i, properties, start, actualCard, actualBack, previousCard, currentCard, selectedCategoryIndex, currentflippedCards, validMoves, degrees, matchCounter, seconds, minutes, hours, currentScore, maxScore, highestScore, bonus,id, CardFlipAudio;
 //Auxiliar arrays
@@ -14,18 +14,14 @@ let imagesCategory1, imagesCategory2, imagesCategory3, imagesCategory4, backgrou
 //VARIABLES INICIALIZATION
 //get menu elements from the DOM
 mainMenu = document.getElementById("mainMenu");
-startButton= document.getElementById("startButton");
-closeButton1 = document.getElementById("closeButton1");
-category1 = document.getElementById("category1");
-category2 = document.getElementById("category2");
-category3 = document.getElementById("category3");
-category4 = document.getElementById("category4");
+mainMenuCategories=document.getElementById("mainMenu-categories");
+
+
 //get game elements from the DOM
 game = document.getElementById("game");
-homeButton = document.getElementById("homeButton");
-pauseButton = document.getElementById("pauseButton");
-replayButton = document.getElementById("replayButton");
-closeButton2 = document.getElementById("closeButton2");
+gameBoard=document.getElementById("gameBoard");
+
+controlsButtons=document.getElementById("controls-buttons");
 cards=document.getElementsByClassName("card");
 chronometer=document.getElementById("chronometer");
 score=document.getElementById("score");
@@ -51,22 +47,25 @@ currentScore=0;
 bonus=0;
 CardFlipAudio=new Audio("sounds/CardFlip.mp3");
 //--------------------------------------------------------------------------------------------------------------
-//main menu buttons actions
-replayButton.addEventListener('click',replayGame);
+
+
 //game buttons actions
-homeButton.addEventListener('click',closeGame);
 
-pauseButton.addEventListener('click',(e)=>{pauseGame(pauseButton)});
-category1.addEventListener('click',(e)=>{startGame(0)});
-category2.addEventListener('click',(e)=>{startGame(1)});
-category3.addEventListener('click',(e)=>{startGame(2)});
-category4.addEventListener('click',(e)=>{startGame(3)});
-
+controlsButtons.addEventListener('click',(e)=>{
+    if(e.target&&e.target.tagName=='BUTTON'){
+        controlsButtonsActions(e.target.classList[1]);
+    }
+})
+//main menu buttons actions
+mainMenuCategories.addEventListener('click',(e)=>{
+    if(e.target&&e.target.tagName=='BUTTON'){
+        startGame(e.target.classList[1])
+    }
+})
 //cards actions Logic of the entire game
-for (i = 0; i < cards.length; i++) {
-
-    cards.item(i).addEventListener('click', (e) => {
-        //if the game has started and the is not in pause
+gameBoard.addEventListener('click',(e)=>{
+    if(e.target&&((e.target.classList[0]=="card")||(e.target.classList[0]=="back"))){
+        
         if(start==1){
             //count the valid moves of the game. Maximum 2 valid moves are allowed
             validMoves++;
@@ -92,7 +91,7 @@ for (i = 0; i < cards.length; i++) {
                         swal("Invalid move!!!")
                         validMoves=1;
                         currentflippedCards--;
-
+    
                     }else{
                        //The second card is flipped
                         
@@ -183,8 +182,10 @@ for (i = 0; i < cards.length; i++) {
             }
             flippedCards.innerHTML=currentflippedCards;
         }
-    })
-}
+    }
+    
+})
+
 //-------------------------------------------------------
 
 function startGame(category) {
@@ -250,6 +251,19 @@ function viewAnimation(view, type) {
     }
 
 }
+function controlsButtonsActions(option){
+    switch(option){
+        case '0':
+            closeGame();
+            break;
+        case '1':
+            pauseGame(pauseButton);
+            break;
+            case '2':
+                replayGame();
+                break;
+    }
+}
 
 function generateBackground() {
     backgroundIndex = backgroundIndex.sort(function() { return Math.random() - 0.5 });
@@ -289,7 +303,6 @@ function flippedCardAnimation(card, degrees) {
 }
 function startChronometer(){
     id=setInterval(() => {
-       
         seconds++
         if(seconds>59){
             seconds=0;
